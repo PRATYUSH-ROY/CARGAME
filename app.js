@@ -34,6 +34,21 @@ function add() {
 
 function uploadBackground() {
     ctx.drawImage(background_imgTag, 0, 0, canvas.width, canvas.height);
+    if (rover_x > 700) {
+        console.log("player1 winner")
+        document.getElementById("gggg").innerHTML="player1 winner";
+        setTimeout(function () {
+            location.reload();
+        }, 5000
+        );
+    } else if (rover_x1 > 700) {
+        document.getElementById("gggg").innerHTML="player2 winner";
+        console.log("player2 winner")
+        setTimeout(function () {
+            location.reload();
+        }, 5000
+        );
+    }
 }
 
 function uploadrover() {
@@ -48,47 +63,37 @@ function uploadrover1() {
 window.addEventListener("keydown", my_keydown);
 
 function my_keydown(e) {
-    e.preventDefault();
+
     keyPressed = e.keyCode;
-    console.log(keyPressed);
     if (keyPressed == '38') {
-        up();
-        console.log("up");
+        up(); e.preventDefault();
     }
     if (keyPressed == '40') {
-        down();
-        console.log("down");
+        down(); e.preventDefault();
     }
     if (keyPressed == '37') {
-        left();
-        console.log("left");
+        left(); e.preventDefault();
     }
     if (keyPressed == '39') {
-        right();
-        console.log("right");
+        right(); e.preventDefault();
     }
     if (keyPressed == '87') {
-        up1();
-        console.log("up");
+        up1(); e.preventDefault();
     }
     if (keyPressed == '83') {
-        down1();
-        console.log("down");
+        down1(); e.preventDefault();
     }
     if (keyPressed == '65') {
-        left1();
-        console.log("left");
+        left1(); e.preventDefault();
     }
     if (keyPressed == '68') {
-        right1();
-        console.log("right");
+        right1(); e.preventDefault();
     }
 }
 
 function up() {
     if (rover_y >= 0) {
         rover_y = rover_y - 10;
-        console.log("When up arrow is pressed,  x = " + rover_x + " | y = " + rover_y);
         uploadBackground();
         uploadrover();
         uploadrover1();
@@ -98,7 +103,6 @@ function up() {
 function down() {
     if (rover_y <= 500) {
         rover_y = rover_y + 10;
-        console.log("When down arrow is pressed,  x = " + rover_x + " | y = " + rover_y);
         uploadBackground();
         uploadrover();
         uploadrover1();
@@ -108,7 +112,6 @@ function down() {
 function left() {
     if (rover_x >= 0) {
         rover_x = rover_x - 10;
-        console.log("When left arrow is pressed,  x = " + rover_x + " | y = " + rover_y);
         uploadBackground();
         uploadrover();
         uploadrover1();
@@ -118,7 +121,6 @@ function left() {
 function right() {
     if (rover_x <= 700) {
         rover_x = rover_x + 10;
-        console.log("When right arrow is pressed,  x = " + rover_x + " | y = " + rover_y);
         uploadBackground();
         uploadrover();
         uploadrover1();
